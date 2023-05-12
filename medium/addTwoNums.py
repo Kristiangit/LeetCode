@@ -2,21 +2,32 @@ l1 = [2, 4, 3]
 l2 = [5, 6, 4]
 outList = []
 
-strL1 = ""
-strL2 = ""
-for i in range(len(l1) - 1, -1, -1):
-    print(i)
-    strL1 += str(l1[i])
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+# class Solution:
+#     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
 
-for i in range(len(l2) - 1, -1, -1):
-    print(i)
-    strL2 += str(l2[i])
-print(strL1)
-print(strL2)
-nitls = str(int(strL2) + int(strL1))
+        dummy = ListNode()
+        cur = dummy
 
-llol = [int((nitls[char])) for char in range(len(str(nitls)) - 1, -1, -1)]
-for char in range(len(str(nitls)) - 1, -1, -1):
-    print(nitls[char])
+        strL1 = ""
+        strL2 = ""
+        while l1:
+            strL1 = str(l1.val) + strL1
+            l1=l1.next
 
-print(llol)
+
+        while l2:
+            strL2 = str(l2.val) + strL2
+            l2=l2.next
+
+        nitls = str(int(strL2) + int(strL1))
+
+        llol = [int((nitls[char])) for char in range(len(str(nitls)) - 1, -1, -1)]
+
+        for char in range(len(str(nitls)) - 1, -1, -1):
+            dummy.next = ListNode(char)
+            dummy = dummy.next
+        return dummy
